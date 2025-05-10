@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { supabase } from '@/utils/supabase'
+import DashboardLayout from '@/components/DashboardLayout.vue'
 
 const transactionsSubmitted = ref([])
 const loading = ref(true)
@@ -24,6 +25,7 @@ onMounted(fetchTaxes)
 </script>
 
 <template>
+  <DashboardLayout>
   <v-row justify="center">
     <v-col cols="12" md="10" lg="8" class="px-6 pt-2">
       <h2 class="text-h5 font-weight-bold mb-6 text-center text-green-darken-3">
@@ -68,4 +70,5 @@ onMounted(fetchTaxes)
       </v-card>
     </v-col>
   </v-row>
+  </DashboardLayout>
 </template>

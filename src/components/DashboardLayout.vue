@@ -5,11 +5,6 @@ const drawer = ref(true)
 
 const menuItems = [
   {
-    title: 'Dashboard',
-    icon: 'mdi-view-dashboard',
-    route: '/dashboard',
-  },
-  {
     title: 'Transactions',
     icon: 'mdi-dump-truck',
     children: [
