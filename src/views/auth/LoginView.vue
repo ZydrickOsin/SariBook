@@ -61,7 +61,7 @@ const onSubmit = async () => {
           <v-card class="login-card elevation-10">
             <v-card-title class="justify-center">
               <v-img
-                src="/public/images/SariBooks.png"
+                src="/images/SariBooks.png"
                 max-width="220"
                 class="my-4 mx-auto"
               />
