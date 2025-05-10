@@ -53,19 +53,19 @@ const menuItems = [
             </template>
 
            <v-list-item
-  v-for="child in item.children"
-  :key="child.title"
-  :to="child.route"
-  link
-  class="ms-6 rounded-lg"
-  active-class="bg-brown-darken-2 text-white"
-  exact
->
-  <v-list-item-content class="d-flex align-center">
-    <v-icon color="brown" class="me-2">{{ child.icon }}</v-icon>
-    <v-list-item-title>{{ child.title }}</v-list-item-title>
-  </v-list-item-content>
-</v-list-item>
+              v-for="child in item.children"
+              :key="child.title"
+              :to="child.route"
+              link
+              class="ms-6 rounded-lg"
+              active-class="bg-brown-darken-2 text-white"
+              exact
+            >
+              <v-list-item-content class="d-flex align-center">
+                <v-icon color="brown" class="me-2">{{ child.icon }}</v-icon>
+                <v-list-item-title>{{ child.title }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
 
           </v-list-group>
         </template>
