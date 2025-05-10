@@ -9,7 +9,6 @@ const router = useRouter()
 const fullName = ref('')
 const email = ref('')
 const password = ref('')
-
 const form = ref({ ...formActionDefault })
 
 const registeraccount = async () => {
@@ -27,7 +26,7 @@ const registeraccount = async () => {
     form.value.formStatus = error.status
     form.value.formErrorMessage = error.message
   } else {
-    form.value.formSuccessMessage = 'Registration successful! '
+    form.value.formSuccessMessage = 'Registration successful!'
     setTimeout(() => {
       router.replace('/')
     }, 2000)
@@ -35,78 +34,104 @@ const registeraccount = async () => {
 
   form.value.formProcess = false
 }
-
 </script>
 
 <template>
-  <v-app>
-    <v-container fluid class="bg-container d-flex align-center justify-center">
-      <v-row justify="center">
-   
-          <v-card class="pa-10 rounded-xl mx-auto text-center" elevation="10" max-width="100%">
-            <v-row no-gutters>
-              <v-col cols="12" class="pa-3 d-flex flex-column justify-center">
-                <v-img class="mx-auto mb-2" src="" width="100" />
-                <h2 class="text-h6 font-weight-bold mb-2">
-                  Register 
-                </h2>
+  <v-app class="bg-brown-lighten-1">
+    <v-container fluid class="fill-height">
+      <v-row
+        align="center"
+        justify="center"
+        class="ma-0"
+        style="min-height: 100vh"
+      >
+        <v-col cols="12" sm="8" md="6" lg="4">
+          <v-card class="rounded-xl elevation-10 pa-6 text-center bg-white">
+            <v-img
+              src="/images/SariBooks.png"
+              max-width="180"
+              class="mx-auto mb-5"
+              contain
+            />
 
-                <v-form fast-fail @submit.prevent="registeraccount">
-                  <v-text-field
-                    v-model="fullName"
-                    label="Full name"
-                    variant="outlined"
-                    density="compact"
-                    class="mb-2"
-                    :rules="[requiredValidator]"
-                  />
-                  <v-text-field
-                    v-model="email"
-                    label="Email"
-                    variant="outlined"
-                    density="compact"
-                    class="mb-2"
-                    :rules="[requiredValidator, emailValidator]"
-                  />
-                  <v-text-field
-                    v-model="password"
-                    label="Password"
-                    type="password"
-                    variant="outlined"
-                    density="compact"
-                    :rules="[requiredValidator, passwordValidator]"
-                  />
+            <h2 class="text-h6 font-weight-bold text-brown-darken-3 mb-4">
+              ✨ Create an Account
+            </h2>
 
-                  <v-btn :loading="form.formProcess" class="mt-3" type="submit" block color="success">
-                    Register
-                  </v-btn>
+            <v-form fast-fail @submit.prevent="registeraccount">
+              <v-text-field
+                v-model="fullName"
+                label="Full name"
+                variant="outlined"
+                density="compact"
+                class="mb-3"
+                :rules="[requiredValidator]"
+                color="brown-darken-2"
+              />
+              <v-text-field
+                v-model="email"
+                label="Email"
+                variant="outlined"
+                density="compact"
+                class="mb-3"
+                :rules="[requiredValidator, emailValidator]"
+                color="brown-darken-2"
+              />
+              <v-text-field
+                v-model="password"
+                label="Password"
+                type="password"
+                variant="outlined"
+                density="compact"
+                class="mb-3"
+                :rules="[requiredValidator, passwordValidator]"
+                color="brown-darken-2"
+              />
 
-                  <div v-if="form.formErrorMessage" class="text-error mt-2">
-                    {{ form.formErrorMessage }}
-                  </div>
-                  <div v-if="form.formSuccessMessage" class="text-success mt-2">
-                    {{ form.formSuccessMessage }}
-                  </div>
-                </v-form>
+              <v-btn
+                :loading="form.formProcess"
+                type="submit"
+                block
+                color="brown-darken-2"
+                class="rounded-lg text-white font-weight-medium"
+              >
+                Register
+              </v-btn>
 
-                <p class="text-caption mt-3">
-                  Already have an account?
-                  <RouterLink to="/" class="text-green-darken-2">Log in</RouterLink>
-                </p>
-              </v-col>
-            </v-row>
+              <div
+                v-if="form.formErrorMessage"
+                class="text-error text-caption mt-2"
+              >
+                {{ form.formErrorMessage }}
+              </div>
+              <div
+                v-if="form.formSuccessMessage"
+                class="text-success text-caption mt-2"
+              >
+                {{ form.formSuccessMessage }}
+              </div>
+            </v-form>
+
+            <p class="text-caption mt-4">
+              Already have an account?
+              <RouterLink
+                to="/"
+                class="text-brown-darken-2 text-decoration-none font-weight-medium"
+              >
+                Log in
+              </RouterLink>
+            </p>
           </v-card>
-      
+        </v-col>
       </v-row>
     </v-container>
   </v-app>
 </template>
 
-<style scoped>
 
-.v-card {
-  background: white;
+
+<style scoped>
+.v-img {
   border-radius: 12px;
-  overflow: hidden;
 }
 </style>
