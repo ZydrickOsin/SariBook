@@ -150,6 +150,16 @@ const submitTransaction = async () => {
                 >
                   <template #default>Add Transaction</template>
                 </v-btn>
+                <!-- Admin Login Button -->
+  <v-btn
+    block
+    variant="text"
+    color="brown-darken-3"
+    class="mt-2 font-weight-medium text-capitalize"
+    @click="$router.push('/login')"
+  >
+    Admin Login
+  </v-btn>
               </v-form>
             </v-card-text>
           </v-card>
