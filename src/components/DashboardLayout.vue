@@ -19,6 +19,13 @@ const menuItems = [
       { title: 'List', route: '/taxsub', icon: 'mdi-file-document-outline' },
     ],
   },
+  {
+    title: 'Approval',
+    icon: 'mdi-check-circle-outline',
+    children: [
+      { title: 'Registration List', route: '/approve', icon: 'mdi-file-document-outline' },
+    ],
+  },
 ]
 </script>
 
