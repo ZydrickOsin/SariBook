@@ -28,7 +28,7 @@ const registeraccount = async () => {
   } else {
     form.value.formSuccessMessage = 'Registration successful!'
     setTimeout(() => {
-      router.replace('/')
+      router.replace('/login')
     }, 2000)
   }
 
