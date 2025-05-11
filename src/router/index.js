@@ -4,12 +4,19 @@ import RegisterView from '@/views/auth/RegisterView.vue'
 import TransactionsView from '@/views/admin/TransactionsView.vue'
 import TaxationView from '@/views/admin/TaxationView.vue'
 import TaxSubmitted from '@/views/admin/TaxSubmitted.vue'
+import AddingForm from '@/views/AddingForm.vue'
+import ApprovalView from '@/views/admin/ApprovalView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
+      name: 'form',
+      component: AddingForm, 
+    },
+    {
+      path: '/login',
       name: 'login',
       component: LoginView, 
     },
@@ -32,6 +39,11 @@ const router = createRouter({
       path: '/taxsub',
       name: 'TaxSubmitted',
        component: TaxSubmitted,
+    },
+    {
+      path: '/approve',
+      name: 'ApprovalView',
+       component: ApprovalView,
     },
  ],
 })

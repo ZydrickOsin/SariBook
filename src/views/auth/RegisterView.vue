@@ -16,24 +16,32 @@ const registeraccount = async () => {
   form.value.formErrorMessage = ''
   form.value.formSuccessMessage = ''
 
-  const { data, error } = await supabase.auth.signUp({
-    email: email.value,
-    password: password.value,
-    full_name: fullName.value,
-  })
+  // Insert registration data into pending_registrations table
+  const { data, error } = await supabase
+    .from('pending_registrations')
+    .insert({
+      full_name: fullName.value,
+      email: email.value,
+      password: password.value, // Store the password temporarily (you should hash it later if needed)
+    })
 
   if (error) {
     form.value.formStatus = error.status
     form.value.formErrorMessage = error.message
   } else {
-    form.value.formSuccessMessage = 'Registration successful!'
+    form.value.formSuccessMessage = 'Registration submitted. Please wait for admin approval.'
+    // Clear the form fields after successful registration
+    fullName.value = ''
+    email.value = ''
+    password.value = ''
     setTimeout(() => {
-      router.replace('/')
+      router.replace('/login')
     }, 2000)
   }
 
   form.value.formProcess = false
 }
+
 </script>
 
 <template>
@@ -115,7 +123,7 @@ const registeraccount = async () => {
             <p class="text-caption mt-4">
               Already have an account?
               <RouterLink
-                to="/"
+                to="/login"
                 class="text-brown-darken-2 text-decoration-none font-weight-medium"
               >
                 Log in
