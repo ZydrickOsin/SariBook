@@ -115,7 +115,7 @@ const registeraccount = async () => {
             <p class="text-caption mt-4">
               Already have an account?
               <RouterLink
-                to="/"
+                to="/login"
                 class="text-brown-darken-2 text-decoration-none font-weight-medium"
               >
                 Log in
