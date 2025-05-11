@@ -31,13 +31,12 @@ const menuItems = [
 
 <template>
   <v-app class="bg-grey-lighten-4">
-    <!-- App Bar -->
+   
     <v-app-bar app color="brown darken-3" dark flat>
       <v-app-bar-nav-icon @click="drawer = !drawer" />
       <v-toolbar-title class="font-weight-bold">📊 Admin Panel</v-toolbar-title>
     </v-app-bar>
 
-    <!-- Navigation Drawer -->
     <v-navigation-drawer app v-model="drawer" class="elevation-8" width="280" color="brown-lighten-5">
       <v-list dense nav>
         <template v-for="item in menuItems" :key="item.title">
@@ -79,14 +78,12 @@ const menuItems = [
       </v-list>
     </v-navigation-drawer>
 
-    <!-- Main Content -->
     <v-main>
       <v-container fluid>
         <slot />
       </v-container>
     </v-main>
 
-    <!-- Footer -->
     <v-footer app color="brown darken-3" class="text-center white--text py-2">
       &copy; {{ new Date().getFullYear() }} Transaction System. All rights reserved.
     </v-footer>

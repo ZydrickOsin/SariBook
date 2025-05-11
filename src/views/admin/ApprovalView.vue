@@ -2,17 +2,14 @@
 import { ref, onMounted, watchEffect } from 'vue';
 import { supabase } from '@/utils/supabase';
 import DashboardLayout from '@/components/DashboardLayout.vue';
-import { Bar } from 'vue-chartjs'; // Import the Bar chart component from vue-chartjs
+import { Bar } from 'vue-chartjs'; 
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js';
 
-// Register necessary Chart.js components
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
 
-// Define reactive variables
 const transactionsSubmitted = ref([]);
 const loading = ref(false);
 
-// Fetch taxes data
 const fetchTaxes = async () => {
   loading.value = true;
   const { data, error } = await supabase
@@ -28,30 +25,27 @@ const fetchTaxes = async () => {
   loading.value = false;
 };
 
-// Call fetchTaxes when component is mounted
 onMounted(() => {
   fetchTaxes();
 });
 
-// Prepare data for the chart
 const chartData = ref({
-  labels: [], // Tax periods (e.g., March-2025, Q1-2025)
+  labels: [], 
   datasets: [
     {
       label: 'Taxes Paid',
-      data: [], // Tax due amounts
-      backgroundColor: 'rgba(121, 85, 72, 0.2)', // Light brown color
-      borderColor: 'rgba(121, 85, 72, 1)', // Dark brown color for the border
+      data: [], 
+      backgroundColor: 'rgba(121, 85, 72, 0.2)',
+      borderColor: 'rgba(121, 85, 72, 1)', 
       borderWidth: 1
     }
   ]
 });
 
-// Update chart data when taxes data is fetched
 watchEffect(() => {
   if (transactionsSubmitted.value.length > 0) {
-    const labels = transactionsSubmitted.value.map(tax => tax.period); // Use period for labels
-    const data = transactionsSubmitted.value.map(tax => tax.tax_due); // Use tax_due for the values
+    const labels = transactionsSubmitted.value.map(tax => tax.period); 
+    const data = transactionsSubmitted.value.map(tax => tax.tax_due); 
     chartData.value.labels = labels;
     chartData.value.datasets[0].data = data;
   }

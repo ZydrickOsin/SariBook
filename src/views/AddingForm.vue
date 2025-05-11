@@ -2,16 +2,14 @@
 import { ref } from 'vue'
 import { supabase } from '@/utils/supabase'
 
-// Reactive form data
 const form = ref({
   date: '',
   amount: '',
-  type: 'income',  // Default type is 'income'
+  type: 'income',  
   category: '',
   notes: ''
 })
 
-// Reactive variable for error/success messages
 const error = ref('')
 const success = ref('')
 
@@ -19,13 +17,11 @@ const submitTransaction = async () => {
   error.value = ''
   success.value = ''
 
-  // Validate form fields
   if (!form.value.date || !form.value.amount || !form.value.category) {
     error.value = 'Please fill in all required fields.'
     return
   }
 
-  // Insert transaction into Supabase
   const { data, error: insertError } = await supabase
     .from('transactions')
     .insert([
@@ -42,7 +38,7 @@ const submitTransaction = async () => {
     error.value = 'Error inserting transaction: ' + insertError.message
   } else {
     success.value = 'Transaction added successfully!'
-    // Reset the form
+  
     form.value = {
       date: '',
       amount: '',
@@ -74,7 +70,6 @@ const submitTransaction = async () => {
                 Add Transaction
               </h2>
 
-              <!-- Error and Success Messages -->
               <v-alert v-if="error" type="error" class="mb-4" border="start" color="error" variant="tonal">
                 {{ error }}
               </v-alert>
@@ -83,7 +78,7 @@ const submitTransaction = async () => {
               </v-alert>
 
               <v-form @submit.prevent="submitTransaction">
-                <!-- Date Field -->
+            
                 <v-text-field
                   v-model="form.date"
                   label="Date"
@@ -95,7 +90,6 @@ const submitTransaction = async () => {
                   class="mb-3"
                 />
 
-                <!-- Amount Field -->
                 <v-text-field
                   v-model="form.amount"
                   label="Amount"
@@ -107,7 +101,6 @@ const submitTransaction = async () => {
                   class="mb-3"
                 />
 
-                <!-- Type Field (Income or Expense) -->
                 <v-select
                   v-model="form.type"
                   :items="['income', 'expense']"
@@ -119,7 +112,6 @@ const submitTransaction = async () => {
                   class="mb-3"
                 />
 
-                <!-- Category Field -->
                 <v-text-field
                   v-model="form.category"
                   label="Category"
@@ -129,8 +121,6 @@ const submitTransaction = async () => {
                   required
                   class="mb-3"
                 />
-
-                <!-- Notes Field -->
                 <v-textarea
                   v-model="form.notes"
                   label="Notes"
@@ -140,7 +130,6 @@ const submitTransaction = async () => {
                   class="mb-3"
                 />
 
-                <!-- Submit Button -->
                 <v-btn
                   type="submit"
                   block
@@ -150,16 +139,16 @@ const submitTransaction = async () => {
                 >
                   <template #default>Add Transaction</template>
                 </v-btn>
-                <!-- Admin Login Button -->
-  <v-btn
-    block
-    variant="text"
-    color="brown-darken-3"
-    class="mt-2 font-weight-medium text-capitalize"
-    @click="$router.push('/login')"
-  >
-    Admin Login
-  </v-btn>
+             
+                <v-btn
+                  block
+                  variant="text"
+                  color="brown-darken-3"
+                  class="mt-2 font-weight-medium text-capitalize"
+                  @click="$router.push('/login')"
+                >
+                  Admin Login
+                </v-btn>
               </v-form>
             </v-card-text>
           </v-card>
