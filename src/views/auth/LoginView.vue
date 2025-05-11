@@ -118,13 +118,6 @@ const onSubmit = async () => {
                   </template>
                 </v-btn>
               </v-form>
-
-              <p class="text-center mt-5 text-caption">
-                Don’t have an account?
-                <RouterLink to="/register" class="register-link">
-                  Register
-                </RouterLink>
-              </p>
             </v-card-text>
           </v-card>
         </v-col>
