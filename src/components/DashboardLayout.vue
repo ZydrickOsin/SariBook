@@ -20,10 +20,10 @@ const menuItems = [
     ],
   },
   {
-    title: 'Approval',
+    title: 'Reports',
     icon: 'mdi-check-circle-outline',
     children: [
-      { title: 'Registration List', route: '/approve', icon: 'mdi-file-document-outline' },
+      { title: 'Taxes Report List', route: '/approve', icon: 'mdi-file-document-outline' },
     ],
   },
 ]
