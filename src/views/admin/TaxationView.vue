@@ -32,7 +32,7 @@ const markAsPaid = async (tx) => {
       tax_type: 'vat',
       income_total: tx.amount,
       tax_rate,
-      tax_due,
+      // tax_due,
       submitted: false,
       status: 'Paid',
     })
